@@ -9,8 +9,10 @@ import {
 } from "react-simple-maps";
 
 function MapChart() {
-
   return (
+    <div>
+      <ComposableMap projection={geoAlbersUsa}/>
+    </div>
   );
 };
 
