@@ -8,10 +8,16 @@ import {
   Annotation
 } from "react-simple-maps";
 
-function MapChart() {
+const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+
+const MapChart = () => {
   return (
     <div>
-      <ComposableMap projection={geoAlbersUsa}/>
+      <ComposableMap projection={geoAlbersUsa}>
+        <Geographies geography={geo}>
+
+        </Geographies>
+      </ComposableMap>
     </div>
   );
 };
