@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import States from './States';
+import MapChart from "./MapChart";
 
 function App() {
+
+  const [ covidData, setCovidData ] = useState([]);
+
+  useEffect( () => {
+    const fetchData = async () => {
+      const response = await fetch('https://api.covidtracking.com/v1/states/current.json')
+      const states = await response.json()
+      setCovidData(states)
+    }
+    fetchData();
+  }, []);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MapChart />
+      <States covidData={covidData} />
     </div>
   );
 }
